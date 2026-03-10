@@ -1,24 +1,7 @@
-/* ============================================================
-   NERVE SOLUTIONS — Stylesheet
-   Structure:
-   1. Google Fonts Import
-   2. CSS Variables (Design Tokens)
-   3. Reset & Base
-   4. Header / Logo
-   5. View Toggle
-   6. Date Dropdown
-   7. Strategy Cards
-   8. Empty State
-   9. Animations
-   10. Responsive
-============================================================ */
 
-
-/* ── 1. Google Fonts ─────────────────────────────────────── */
+/* Google Fonts & CSS Variables */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
 
-
-/* ── 2. CSS Variables ────────────────────────────────────── */
 :root {
   --color-bg:           #f5f5f3;
   --color-white:        #ffffff;
@@ -41,7 +24,7 @@
 }
 
 
-/* ── 3. Reset & Base ─────────────────────────────────────── */
+/* Reset & Base Styles */
 *,
 *::before,
 *::after {
@@ -58,8 +41,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  /* Fixed top padding — page nahi kudega tab switch pe */
   padding: 60px 16px 80px;
 }
 
@@ -74,43 +55,7 @@ button {
   background: none;
 }
 
-
-/* ── 4. Header / Logo ────────────────────────────────────── */
-.header {
-  width: 100%;
-  max-width: 520px;
-  padding: 36px 0 24px;
-  border-bottom: 2px solid var(--color-accent);
-  margin-bottom: 32px;
-
-  /* Logo sits on the right, matching the design */
-  display: flex;
-  justify-content: flex-end;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: -1.5px;
-  color: var(--color-text);
-}
-
-/* The blue dot in the middle of "nerve" */
-.logo-dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  background-color: var(--color-accent);
-  border-radius: 50%;
-  margin: 0 1px;
-  position: relative;
-  top: -2px;
-}
-
-
-/* ── 5. View Toggle ──────────────────────────────────────── */
+/* View Toggle */
 .view-toggle {
   width: 100%;
   max-width: 520px;
@@ -146,8 +91,7 @@ button {
   box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28);
 }
 
-
-/* ── 6. Date Dropdown ────────────────────────────────────── */
+/* Date Dropdown */
 .dropdown-wrapper {
   width: 100%;
   max-width: 520px;
@@ -155,7 +99,7 @@ button {
   margin-bottom: 20px;
 }
 
-/* The visible button that shows selected date */
+/* Dropdown button */
 .dropdown-btn {
   width: 100%;
   background: var(--color-white);
@@ -176,14 +120,14 @@ button {
   border-color: #bbb;
 }
 
-/* When dropdown is open — highlight the border */
+/* Open state */
 .dropdown-btn.open {
   border-color: var(--color-accent);
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 }
 
-/* Chevron arrow icon */
+/* Chevron icon */
 .chevron-icon {
   width: 18px;
   height: 18px;
@@ -192,12 +136,11 @@ button {
   flex-shrink: 0;
 }
 
-/* Rotate arrow when dropdown is open */
 .dropdown-btn.open .chevron-icon {
   transform: rotate(180deg);
 }
 
-/* The dropdown list */
+/* Dropdown menu */
 .dropdown-menu {
   position: absolute;
   top: calc(100% + 2px);
@@ -217,7 +160,7 @@ button {
   display: none;
 }
 
-/* Each date option inside the dropdown */
+/* Dropdown item */
 .dropdown-item {
   padding: 14px 18px;
   font-size: 15px;
@@ -236,22 +179,18 @@ button {
   background-color: #eff3ff;
 }
 
-/* Highlight the currently selected date */
 .dropdown-item.selected {
   color: var(--color-accent);
   font-weight: 600;
 }
 
-
-/* ── 7. Strategy Cards ───────────────────────────────────── */
+/* Strategy Cards */
 .cards-container {
   width: 100%;
   max-width: 520px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-
-  /* Fixed height — empty state pe bhi container shrink nahi hogi */
   min-height: 320px;
 }
 
@@ -264,8 +203,6 @@ button {
   justify-content: space-between;
   align-items: center;
   box-shadow: var(--shadow-card);
-
-  /* Staggered animation handled inline via JS */
   animation: cardSlideIn 0.22s ease both;
 }
 
@@ -284,7 +221,7 @@ button {
   color: var(--color-text-muted);
 }
 
-/* Small grey dot before the count label */
+/* Count dot */
 .count-dot {
   width: 6px;
   height: 6px;
@@ -293,8 +230,7 @@ button {
   flex-shrink: 0;
 }
 
-
-/* ── 8. Empty State ──────────────────────────────────────── */
+/* Empty State */
 .empty-state {
   width: 100%;
   max-width: 520px;
@@ -321,8 +257,7 @@ button {
   margin-top: 2px;
 }
 
-
-/* ── 9. Animations ───────────────────────────────────────── */
+/* Animations */
 @keyframes dropIn {
   from {
     opacity: 0;
@@ -345,8 +280,7 @@ button {
   }
 }
 
-
-/* ── 10. Responsive ──────────────────────────────────────── */
+/* Responsive Design */
 @media (max-width: 480px) {
   .toggle-btn {
     font-size: 12px;

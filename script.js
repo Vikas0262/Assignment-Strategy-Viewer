@@ -1,38 +1,20 @@
 const state = {
-  selectedView: 'Bullish',       // default view
-  selectedDate: dateArray[0],    // default = first date
+  selectedView: 'Bullish',
+  selectedDate: dateArray[0],
   dropdownOpen: false
 };
 
-
-/* ── 3. Helper Functions ─────────────────────────────────── */
-
-/**
- * Converts '24-Apr-2024' → '24 Apr 2024' for display
- */
+// Format date: '24-Apr-2024' → '24 Apr 2024'
 function formatDate(dateStr) {
   return dateStr.replace(/-/g, ' ');
 }
 
-/**
- * Finds strategies for the currently selected view + date.
- * Returns an object like: { 'Bull Call Spread': 3, 'Long Call': 1 }
- * Returns null if no data found.
- */
+// Get strategy count by view and date
 function getStrategyCounts(view, date) {
-  // Find the matching view entry (case-insensitive just to be safe)
-  const viewEntry = strategyArray.find(
-    item => item.View.toLowerCase() === view.toLowerCase()
-  );
-
+  const viewEntry = strategyArray.find(item => item.View.toLowerCase() === view.toLowerCase());
   if (!viewEntry) return null;
-
-  // Get the array of strategy names for the selected date
   const strategies = viewEntry.Value[date];
-
   if (!strategies || strategies.length === 0) return null;
-
-  // Count how many times each strategy name appears
   const counts = {};
   strategies.forEach(name => {
     counts[name] = (counts[name] || 0) + 1;
@@ -42,8 +24,7 @@ function getStrategyCounts(view, date) {
 }
 
 
-/* ── 4. Render Functions ─────────────────────────────────── */
-
+// Render dropdown menu with dates
 function renderDropdown() {
   const menu = document.getElementById('dropdownMenu');
   menu.innerHTML = '';
@@ -57,13 +38,10 @@ function renderDropdown() {
 
     li.addEventListener('click', () => {
       state.selectedDate = date;
-
-      // Update the button label
       document.getElementById('selectedDateLabel').textContent = formatDate(date);
-
       closeDropdown();
-      renderDropdown();   // refresh selected highlight
-      renderCards();      // refresh cards for new date
+      renderDropdown();
+      renderCards();
     });
 
     menu.appendChild(li);
@@ -75,8 +53,7 @@ function renderCards() {
   container.innerHTML = '';
 
   const counts = getStrategyCounts(state.selectedView, state.selectedDate);
-
-  // No strategies found → show empty state
+  // Show empty state if no strategies
   if (!counts) {
     container.innerHTML = `
       <div class="empty-state">
@@ -88,13 +65,10 @@ function renderCards() {
     `;
     return;
   }
-
-  // Strategies found → render one card per unique strategy
+  // Render one card per unique strategy
   Object.entries(counts).forEach(([name, count], index) => {
     const card = document.createElement('div');
     card.className = 'strategy-card';
-
-    // Staggered animation so cards slide in one by one
     card.style.animationDelay = `${index * 0.05}s`;
 
     card.innerHTML = `
@@ -110,13 +84,10 @@ function renderCards() {
 }
 
 
-/* ── 5. Event Listeners ──────────────────────────────────── */
-
+// View toggle click handler
 document.getElementById('viewToggle').addEventListener('click', (e) => {
   const clickedBtn = e.target.closest('.toggle-btn');
   if (!clickedBtn) return;
-
-  // Remove active class from all, add to clicked
   document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
   clickedBtn.classList.add('active');
 
@@ -124,16 +95,12 @@ document.getElementById('viewToggle').addEventListener('click', (e) => {
   renderCards();
 });
 
-/**
- * Dropdown Button — open/close toggle
- */
+// Dropdown toggle
 document.getElementById('dropdownBtn').addEventListener('click', () => {
   state.dropdownOpen ? closeDropdown() : openDropdown();
 });
 
-/**
- * Click outside dropdown → close it
- */
+// Close dropdown when clicking outside
 document.addEventListener('click', (e) => {
   const wrapper = document.querySelector('.dropdown-wrapper');
   if (!wrapper.contains(e.target)) {
@@ -156,12 +123,7 @@ function closeDropdown() {
 }
 
 
-/* ── 6. App Init ─────────────────────────────────────────── */
-// Set the initial date label in the dropdown button
+// Initialize app
 document.getElementById('selectedDateLabel').textContent = formatDate(state.selectedDate);
-
-// Build dropdown list
 renderDropdown();
-
-// Render initial cards
 renderCards();
