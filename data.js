@@ -1,4 +1,3 @@
-/* ── Date Array ──────────────────────────────────────────── */
 
 const dateArray = [
   '24-Apr-2024',
@@ -8,8 +7,6 @@ const dateArray = [
   '21-Jun-2024'
 ];
 
-
-/* ── Strategy Array ──────────────────────────────────────── */
 
 const strategyArray = [
   {

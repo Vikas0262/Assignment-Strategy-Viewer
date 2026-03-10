@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nerve Solutions</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-
-  
   <main class="container">
-
-    <!-- View Toggle (4 views) -->
     <div class="view-toggle" id="viewToggle">
       <button class="toggle-btn active" data-view="Bullish">Bullish</button>
       <button class="toggle-btn" data-view="Bearish">Bearish</button>
@@ -21,9 +15,7 @@
       <button class="toggle-btn" data-view="Volatile">Volatile</button>
     </div>
 
-    <!-- Date Dropdown -->
     <div class="dropdown-wrapper">
-
       <button class="dropdown-btn" id="dropdownBtn" aria-haspopup="listbox" aria-expanded="false">
         <span id="selectedDateLabel"></span>
         <svg class="chevron-icon" viewBox="0 0 24 24" fill="none"
@@ -32,18 +24,12 @@
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </button>
-
       <ul class="dropdown-menu hidden" id="dropdownMenu" role="listbox"></ul>
     </div>
-
-    <!-- Strategy Cards -->
+    
     <section class="cards-container" id="cardsContainer"></section>
-
   </main>
-
   <script src="data.js"></script>
   <script src="script.js"></script>
-
 </body>
-
 </html>
