@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nerve Solutions</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="header">
+    <div class="logo">
+      <img src="https://framerusercontent.com/images/1loOwMnCEo2EMvPCci4lIdclqag.png" alt="Nerve Logo" class="logo-img">
+    </div>
+  </header>
+
+  <!-- ===================== MAIN CONTENT ===================== -->
+  <main class="container">
+
+    <!-- View Toggle: Bullish / Bearish / Rangebound / Volatile -->
+    <div class="view-toggle" id="viewToggle">
+      <button class="toggle-btn active" data-view="Bullish">Bullish</button>
+      <button class="toggle-btn" data-view="Bearish">Bearish</button>
+      <button class="toggle-btn" data-view="Rangebound">Rangebound</button>
+      <button class="toggle-btn" data-view="Volatile">Volatile</button>
+    </div>
+
+    <!-- Date Dropdown -->
+    <div class="dropdown-wrapper">
+
+      <button class="dropdown-btn" id="dropdownBtn" aria-haspopup="listbox" aria-expanded="false">
+        <span id="selectedDateLabel"></span>
+        <svg class="chevron-icon" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+
+      <!-- Dropdown options are injected by JS -->
+      <ul class="dropdown-menu hidden" id="dropdownMenu" role="listbox"></ul>
+
+    </div>
+
+    <!-- Strategy Cards (or Empty State) — injected by JS -->
+    <section class="cards-container" id="cardsContainer"></section>
+
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
