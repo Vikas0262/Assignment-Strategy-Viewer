@@ -1,3 +1,18 @@
+/* ============================================================
+   NERVE SOLUTIONS — Stylesheet
+   Structure:
+   1. Google Fonts Import
+   2. CSS Variables (Design Tokens)
+   3. Reset & Base
+   4. Header / Logo
+   5. View Toggle
+   6. Date Dropdown
+   7. Strategy Cards
+   8. Empty State
+   9. Animations
+   10. Responsive
+============================================================ */
+
 
 /* ── 1. Google Fonts ─────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
@@ -43,7 +58,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 16px 80px;
+
+  /* Fixed top padding — page nahi kudega tab switch pe */
+  padding: 60px 16px 80px;
 }
 
 ul {
@@ -80,12 +97,6 @@ button {
   color: var(--color-text);
 }
 
-.logo-img {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-}
-
 /* The blue dot in the middle of "nerve" */
 .logo-dot {
   display: inline-block;
@@ -104,10 +115,10 @@ button {
   width: 100%;
   max-width: 520px;
   background: var(--color-white);
-  border-radius: var(--radius-pill);
-  padding: 5px;
+  border-radius: var(--radius-md);
+  padding: 8px;
   display: flex;
-  gap: 2px;
+  gap: 10px;
   margin-bottom: 16px;
   box-shadow: var(--shadow-card);
 }
@@ -115,7 +126,7 @@ button {
 .toggle-btn {
   flex: 1;
   padding: 10px 8px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   font-size: 14px;
   font-weight: 500;
   color: var(--color-text-muted);
@@ -239,6 +250,9 @@ button {
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  /* Fixed height — empty state pe bhi container shrink nahi hogi */
+  min-height: 320px;
 }
 
 .strategy-card {
