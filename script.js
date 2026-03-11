@@ -29,11 +29,16 @@ function renderDropdown() {
     li.textContent = formatDate(date);
     li.setAttribute('role', 'option');
     li.setAttribute('aria-selected', date === state.selectedDate);
+    li.dataset.date = date;
     li.addEventListener('click', () => {
       state.selectedDate = date;
       document.getElementById('selectedDateLabel').textContent = formatDate(date);
       closeDropdown();
-      renderDropdown();
+      // Update selected highlight without full re-render
+      document.querySelectorAll('.dropdown-item').forEach(el => {
+        el.classList.toggle('selected', el.dataset.date === date);
+        el.setAttribute('aria-selected', el.dataset.date === date);
+      });
       renderCards();
     });
     menu.appendChild(li);
@@ -59,13 +64,21 @@ function renderCards() {
     const card = document.createElement('div');
     card.className = 'strategy-card';
     card.style.animationDelay = `${index * 0.05}s`;
-    card.innerHTML = `
-      <span class="card-name">${name}</span>
-      <span class="card-count">
-        <span class="count-dot"></span>
-        ${count} ${count === 1 ? 'Strategy' : 'Strategies'}
-      </span>
-    `;
+
+    const nameSpan = document.createElement('span');
+    nameSpan.className = 'card-name';
+    nameSpan.textContent = name;
+
+    const dot = document.createElement('span');
+    dot.className = 'count-dot';
+
+    const countSpan = document.createElement('span');
+    countSpan.className = 'card-count';
+    countSpan.appendChild(dot);
+    countSpan.append(` ${count} ${count === 1 ? 'Strategy' : 'Strategies'}`);
+
+    card.appendChild(nameSpan);
+    card.appendChild(countSpan);
     container.appendChild(card);
   });
 }

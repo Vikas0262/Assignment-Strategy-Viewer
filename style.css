@@ -53,6 +53,15 @@ button {
   background: none;
 }
 
+/* Page Container */
+.container {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* View Toggle */
 .view-toggle {
   width: 100%;
