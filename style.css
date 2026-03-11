@@ -158,11 +158,9 @@ button {
 }
 
 .dropdown-item.selected {
-  color: var(--color-white);
+  color: var(--color-accent);
   font-weight: 600;
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28);
+  background-color: var(--color-white);
 }
 
 /* Strategy Cards */
